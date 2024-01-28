@@ -18,7 +18,7 @@ h1 {
     height: 320px;
     display: flex;
     position: absolute;
-    top: 10%;
+    top: 90px;
     left: calc(50% - 160px);
     flex-wrap: wrap;
     padding: 0;
@@ -30,7 +30,7 @@ h1 {
     width: 320px;
     text-align: center;
     position: absolute;
-    top: 48%;
+    top: 432px;
     left: calc(50% - 160px);
 }
 td, th {

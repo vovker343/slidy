@@ -172,7 +172,6 @@ const swapHtml = (puz, i, z) => {
     updateTiles(puz);
     return moveValue;
 }
-/* to be fixed - can hover over the tiles that aren't supposed to be enabled */
 const updateTiles = (puz) => {
     const puzzlePieces = document.querySelectorAll(".piece, .blank");
     let lastIndex;
@@ -239,6 +238,13 @@ const updateAverages = () => {
             document.querySelector(`.avg${i}.moves`).textContent = "";
             document.querySelector(`.avg${i}.tps`).textContent = "";
         }
+    }
+    if (solves.length >= 3) {
+        let avg = calcAverage(solves);
+        document.querySelector(`#session`).textContent = `Total solves: ${solves.length}`;
+        document.querySelector(`.session.time`).textContent = avg[0];
+        document.querySelector(`.session.moves`).textContent = avg[1];
+        document.querySelector(`.session.tps`).textContent = avg[2];
     }
 }
 

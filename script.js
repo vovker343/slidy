@@ -277,6 +277,8 @@ const stopSolve = () => {
 }
 
 let puzzle = new Puzzle();
+
+document.addEventListener('contextmenu', event => event.preventDefault());
 document.addEventListener("keydown", (e) => {
     if (e.key === " " && !solve) { 
         initSolve(); 

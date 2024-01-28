@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles.css">
+        <title>15 Puzzle Online Simulator</title>
+    </head>
+    <body>
+        <h1>15 Puzzle Simulator</h1>
+        <div id="puzzle-container">
+            <div class="piece">1</div>
+        </div>
+        <div id="stats-container">
+            <table id="stats">
+                <tr>
+                    <th>Average type</th>
+                    <th>Time</th>
+                    <th>Moves</th>
+                    <th>TPS</th>
+                </tr>
+                <tr id="single">
+                    <td class="desc">Single</td>
+                    <td id="single-time">0.000</td>
+                    <td id="single-moves">0</td>
+                    <td id="single-tps">0.000</td>
+                </tr>
+                <tr id="avg-5">
+                    <td class="desc">Average of 5</td>
+                    <td class="avg5 time"></td>
+                    <td class="avg5 moves"></td>
+                    <td class="avg5 tps"></td>
+                </tr>
+                <tr id="avg-12">
+                    <td class="desc">Average of 12</td>
+                    <td class="avg12 time"></td>
+                    <td class="avg12 moves"></td>
+                    <td class="avg12 tps"></td>
+                </tr>
+                <tr id="avg-50">
+                    <td class="desc">Average of 50</td>
+                    <td class="avg50 time"></td>
+                    <td class="avg50 moves"></td>
+                    <td class="avg50 tps"></td>
+                </tr>
+                <tr id="avg-100">
+                    <td class="desc">Average of 100</td>
+                    <td class="avg100 time"></td>
+                    <td class="avg100 moves"></td>
+                    <td class="avg100 tps"></td>
+                </tr>
+            </table>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

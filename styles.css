@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+    font-family: Lexend, sans-serif;
+}
+html {
+    font-size: 16px;
+}
+body {
+    background-color: #121212;
+    color: #eeeeee;
+}
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+}
+#puzzle-container {
+    width: 320px;
+    height: 320px;
+    display: flex;
+    position: absolute;
+    top: 10%;
+    left: calc(50% - 160px);
+    flex-wrap: wrap;
+    padding: 0;
+    align-items: center;
+    text-align: center;
+    color: black;
+}
+#stats {
+    width: 320px;
+    text-align: center;
+    position: absolute;
+    top: 48%;
+    left: calc(50% - 160px);
+}
+td, th {
+    border: 1px solid white;
+    font-size: 0.9rem;
+}
+.desc {
+    width: 120px;
+}
+td[class~="time"] {
+    width: 70px;
+}
+td[class~="moves"] {
+    width: 60px;
+}
+td[class~="tps"] {
+    width: 70px;
+}

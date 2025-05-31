@@ -274,13 +274,13 @@ const initSolve = () => {
     puzzle.randomShuffle();
     puzzle.draw();
     resetStats();
+    lastMove = "";
     solve = true;
     updateTiles(puzzle);
 }
 const stopSolve = () => {
     puzzle.state = puzzle.solvedState();
     puzzle.draw();
-    lastMove = "";
     solve = false;
     updateTiles(puzzle);
     clearInterval(timer);

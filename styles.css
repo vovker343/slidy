@@ -54,3 +54,6 @@ td[class~="tps"] {
     top: 65%;
     position: absolute;
 }
+.piece {
+    user-select: none;
+}

@@ -52,4 +52,5 @@ td[class~="tps"] {
 input {
     left: calc(50% - 80px);
     top: 65%;
+    position: absolute;
 }

@@ -177,6 +177,7 @@ const swapHtml = (puz, i, z, lm) => {
     return [Number(lm !== m), m];
 }
 const updateTiles = (puz) => {
+    hover = document.getElementById("hover").checked;
     const puzzlePieces = document.querySelectorAll(".piece, .blank");
     let lastIndex;
     puzzlePieces.forEach((node, index) => {
@@ -185,11 +186,20 @@ const updateTiles = (puz) => {
             (index - zeroIndex) % puz.width === 0,
             Math.floor(index / puz.width) === Math.floor(zeroIndex / puz.width)
         ].some(n => n && index !== zeroIndex);
-        let ev = ["click", "mouseenter"][Number(hover)]
-        if (!check) {
-            node.removeEventListener(ev, handleMove, true);
+        if (hover) {
+            if (!check) {
+                node.removeEventListener("mouseenter", handleMove, true);
+                node.removeEventListener("click", handleMove, true);
+            } else {
+                node.addEventListener("mouseenter", handleMove, true);
+            }
         } else {
-            node.addEventListener(ev, handleMove, true);
+            if (!check) {
+                node.removeEventListener("click", handleMove, true);
+                node.removeEventListener("mouseenter", handleMove, true);
+            } else {
+                node.addEventListener("click", handleMove, true);
+            }
         }
     })
 }
@@ -273,7 +283,6 @@ const calcAverage = (solves) => {
 const sum = (arr) => arr.reduce((a,b) => a+b, 0);
 
 const initSolve = () => {
-    hover = document.getElementById("hover").value;
     puzzle.randomShuffle();
     puzzle.draw();
     resetStats();

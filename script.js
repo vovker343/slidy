@@ -173,7 +173,7 @@ const swapHtml = (puz, i, z, lm) => {
     }
     puz.doMove(`${m}${moveValue}`);
     updateTiles(puz);
-    return [Number(lm === m), m];
+    return [Number(lm !== m), m];
 }
 const updateTiles = (puz) => {
     const puzzlePieces = document.querySelectorAll(".piece, .blank");

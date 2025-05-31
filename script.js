@@ -1,6 +1,7 @@
 const puzzleContainer = document.querySelector("#puzzle-container");
 
 let solve = false;
+let lastMove = "";
 let firstMoveTime = 0;
 let currentMoveCount = 0;
 let timer;
@@ -151,26 +152,28 @@ const swapHtmlReal = (i,z) => {
     puzzleContainer.insertBefore(elem_i, children[z]);
 }
 
-const swapHtml = (puz, i, z) => {
+const swapHtml = (puz, i, z, lm) => {
     let gap = i-z;
     let gapSign = Math.sign(gap);
     gap = Math.abs(gap);
     let moveValue = gap < puz.width ? gap : parseInt(gap / puz.width);
+    let m = '';
     if (gap < puz.width) {
         if (gapSign < 0) {
-            puz.doMove(`R${moveValue}`);
+            m = "R";
         } else {
-            puz.doMove(`L${moveValue}`);
+            m = "L";
         }
     } else {
         if (gapSign < 0) {
-            puz.doMove(`D${moveValue}`);
+            m = "D";
         } else {
-            puz.doMove(`U${moveValue}`);
+            m = "U";
         }
     }
+    puz.doMove(`${m}${moveValue}`);
     updateTiles(puz);
-    return moveValue;
+    return [Number(lm === m), m];
 }
 const updateTiles = (puz) => {
     const puzzlePieces = document.querySelectorAll(".piece, .blank");
@@ -191,12 +194,13 @@ const updateTiles = (puz) => {
 const handleMove = async (e) => {
     let zeroIndex = puzzle.state.findIndex(n => n === 0);
     const nth = [...puzzleContainer.children].findIndex(val => val.id === e.target.id);
-    let m = swapHtml(puzzle, nth, zeroIndex);
+    let m = swapHtml(puzzle, nth, zeroIndex, lastMove);
     if (solve) {
         if (!currentMoveCount) {
             firstMoveTime = new Date();
         }
-        currentMoveCount += m;
+        currentMoveCount += m[0];
+        lastMove = m[1];
         timer = timer ? timer : setInterval(updateTimeTps, 50);
         updateMoves(currentMoveCount);
         if (isSolved()) {
@@ -276,7 +280,7 @@ const initSolve = () => {
 const stopSolve = () => {
     puzzle.state = puzzle.solvedState();
     puzzle.draw();
-    solve = false;
+    lastMove = "";
     updateTiles(puzzle);
     clearInterval(timer);
     timer = 0;

@@ -186,8 +186,10 @@ const updateTiles = (puz) => {
         ].some(n => n && index !== zeroIndex);
         if (!check) {
             node.removeEventListener("mouseenter", handleMove, true);
+            node.removeEventListener("click", handleMove, true);
         } else {
             node.addEventListener("mouseenter", handleMove, true);
+            node.addEventListener("click", handleMove, true);
         }
     })
 }

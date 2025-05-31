@@ -49,7 +49,7 @@ td[class~="moves"] {
 td[class~="tps"] {
     width: 70px;
 }
-input {
+#settings {
     left: calc(50% - 80px);
     top: 65%;
     position: absolute;

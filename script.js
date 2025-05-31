@@ -185,7 +185,7 @@ const updateTiles = (puz) => {
             (index - zeroIndex) % puz.width === 0,
             Math.floor(index / puz.width) === Math.floor(zeroIndex / puz.width)
         ].some(n => n && index !== zeroIndex);
-        ev = ["click", "mouseenter"][Number(hover)]
+        let ev = ["click", "mouseenter"][Number(hover)]
         if (!check) {
             node.removeEventListener(ev, handleMove, true);
         } else {

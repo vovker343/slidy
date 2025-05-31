@@ -1,6 +1,7 @@
 const puzzleContainer = document.querySelector("#puzzle-container");
 
 let solve = false;
+let hover = false;
 let lastMove = "";
 let firstMoveTime = 0;
 let currentMoveCount = 0;
@@ -184,12 +185,11 @@ const updateTiles = (puz) => {
             (index - zeroIndex) % puz.width === 0,
             Math.floor(index / puz.width) === Math.floor(zeroIndex / puz.width)
         ].some(n => n && index !== zeroIndex);
+        ev = ["click", "mouseenter"][Number(hover)]
         if (!check) {
-            node.removeEventListener("mouseenter", handleMove, true);
-            node.removeEventListener("click", handleMove, true);
+            node.removeEventListener(ev, handleMove, true);
         } else {
-            node.addEventListener("mouseenter", handleMove, true);
-            node.addEventListener("click", handleMove, true);
+            node.addEventListener(ev, handleMove, true);
         }
     })
 }
@@ -273,6 +273,7 @@ const calcAverage = (solves) => {
 const sum = (arr) => arr.reduce((a,b) => a+b, 0);
 
 const initSolve = () => {
+    hover = document.getElementById("hover").value;
     puzzle.randomShuffle();
     puzzle.draw();
     resetStats();

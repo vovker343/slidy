@@ -281,6 +281,7 @@ const stopSolve = () => {
     puzzle.state = puzzle.solvedState();
     puzzle.draw();
     lastMove = "";
+    solve = false;
     updateTiles(puzzle);
     clearInterval(timer);
     timer = 0;
